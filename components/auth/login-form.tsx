@@ -24,6 +24,12 @@ import { FormSuccess } from "@/components/form-success";
 import { login } from "@/actions/login";
 
 export const LoginForm = () => {
+    const searchParams = useSearchParams();
+    // const callbackUrl = searchParams.get("callbackUrl");
+    const urlError = searchParams.get("error") === "OAuthAccountNotLinked"
+        ? "Email is  already in use with different provider!"
+        : "";
+
     const [isPending, startTransition] = useTransition();
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
@@ -109,7 +115,7 @@ export const LoginForm = () => {
                             )}
                         />
                     </div>
-                    <FormError message={error} />
+                    <FormError message={error || urlError} />
                     <FormSuccess message={success} />
                     <Button
                         disabled={isPending}
