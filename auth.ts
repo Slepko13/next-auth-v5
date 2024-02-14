@@ -24,6 +24,17 @@ export const {
         }
     },
     callbacks: {
+        async signIn({ user, account }) {
+            //Allow OAuth email verification
+            if (account?.provider !== "credentials") return true;
+
+            const candidate = await getUserById(user.id!); //types???
+
+            if (!candidate?.emailVerified) return false
+
+
+            return true
+        },
         async session({ token, session }) {
             console.log({ sessionToken: token })
             if (token.sub && session.user) {
