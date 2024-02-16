@@ -1,4 +1,10 @@
-import * as zod from 'zod'
+import * as zod from 'zod';
+
+export const ResetSchema = zod.object({
+    email: zod.string().email({
+        message: 'Email is required'
+    }),
+});
 
 export const LoginSchema = zod.object({
     email: zod.string().email({
