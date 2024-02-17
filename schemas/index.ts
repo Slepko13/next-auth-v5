@@ -18,7 +18,8 @@ export const LoginSchema = zod.object({
     }),
     password: zod.string().min(1, {
         message: 'Password is required'
-    })
+    }),
+    code: zod.optional(zod.string())
 });
 
 export const RegisterSchema = zod.object({
