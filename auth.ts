@@ -47,7 +47,6 @@ export const {
             return true
         },
         async session({ token, session }) {
-            console.log({ sessionToken: token })
             if (token.sub && session.user) {
                 session.user.id = token.sub
             }
@@ -58,7 +57,6 @@ export const {
             return session
         },
         async jwt({ token }) {
-            console.log({ token })
             if (!token.sub) return token;
             const user = await getUserById(token.sub)
 
