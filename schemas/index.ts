@@ -1,5 +1,10 @@
 import * as zod from 'zod';
 
+export const SettingsSchema = zod.object({
+    name: zod.optional(zod.string()),
+    isTwoFactorEnabled: zod.optional(zod.boolean()),
+})
+
 export const NewPasswordSchema = zod.object({
     password: zod.string().min(6, {
         message: 'Password should be 6 characters minimum'
