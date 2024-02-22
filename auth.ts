@@ -11,7 +11,8 @@ export const {
     handlers: { GET, POST },
     auth,
     signIn,
-    signOut
+    signOut,
+    unstable_update: update
 } = NextAuth({
     pages: {
         signIn: "/auth/login",
